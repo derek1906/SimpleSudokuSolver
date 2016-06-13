@@ -1,6 +1,12 @@
 #ifndef SUDOKU
 #define SUDOKU
 
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdio.h>
+#include <stdlib.h>
+
 #define FILE_HEADER_POS 0
 #define BOARD_POS 7
 
