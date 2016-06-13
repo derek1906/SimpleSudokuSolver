@@ -10,14 +10,16 @@ private:
 	Sudoku* sudoku;
 	std::list<int> candidates[Sudoku::DIMENSION][Sudoku::DIMENSION];
 
-public:
-	SudokuSolver(Sudoku* sudoku);
-
-	bool solve();
+private:
 	bool solve(int x, int y);
 	bool solveNext(int x, int y);
 	void buildCandidatesTable();
 	bool fillInWithLogic();
+
+public:
+	SudokuSolver(Sudoku* sudoku);
+
+	bool solve();
 };
 
 

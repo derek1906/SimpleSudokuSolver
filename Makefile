@@ -1,5 +1,5 @@
 CC=clang++
-CFLAGS=-c -Wall -g -O3
+CFLAGS=-c -Wall -O3 -std=c++11
 EXECUTABLE=sudoku_solver
 
 all: main $(SOURCES) 
@@ -20,4 +20,7 @@ SudokuSolver.o: SudokuSolver.cpp
 
 # Clean directory
 clean:
-	rm *o $(EXECUTABLE)
+	rm *.o $(EXECUTABLE)
+
+# Remake
+remake: clean all
