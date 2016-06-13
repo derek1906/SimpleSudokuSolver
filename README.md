@@ -1,5 +1,5 @@
 # Simple Command Line Sudoku Solver
-A simple and fast Sudoku solver written C++. The program takes a `.sudoku` file and solves it.
+A simple and fast Sudoku solver written in C++. The program takes a `.sudoku` file and solves it.
 
 ## The `.sudoku` format
 A `.sudoku` file consists of UTF-8 characters, with "sudoku" in the first 8 bytes:
