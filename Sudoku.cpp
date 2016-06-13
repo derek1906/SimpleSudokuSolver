@@ -26,7 +26,7 @@ void Sudoku::printBoard(){
 		int* row = getRow(y);
 		printIntArray(row, Sudoku::DIMENSION);
 
-		delete row;
+		delete[] row;
 	}
 }
 
@@ -34,7 +34,9 @@ void Sudoku::printBoard(){
 // Caller should free the returned array
 int* Sudoku::getColumn(int x){
 	int* column = new int[9];
-	memcpy(column, board[x], Sudoku::DIMENSION);
+	for(int y = 0; y < DIMENSION; y++){
+		column[y] = board[x][y];
+	}
 
 	return column;
 }
@@ -49,10 +51,63 @@ int* Sudoku::getRow(int y){
 	return row;
 }
 
+// Caller should free the returned array
+int* Sudoku::getContainingGrid(int x, int y){
+	int ax = (x/3)*3, ay = (y/3)*3,
+		bx = (x/3 + 1)*3, by = (y/3 + 1)*3;
+
+	int* grid = new int[9];
+	for(int x = ax; x < bx; x++){
+		for(int y = ay; y < by; y++){
+			grid[(x - ax)*3 + (y-ay)] = board[x][y];
+		}
+	}
+
+	return grid;
+}
+
+int Sudoku::getCell(int x, int y){
+	return board[x][y];
+}
+
 void Sudoku::setCell(int x, int y, int value){
 	board[x][y] = value;
 }
 
+
+bool Sudoku::isValueValid(int x, int y, int value){
+	if(getCell(x, y) != 0)	return false;
+
+	// check row and column
+	int* col = getColumn(x);
+	int* row = getRow(y);
+	for(int i = 0; i < DIMENSION; i++){
+		if(col[i] == value || row[i] == value){
+			delete[] col;
+			delete[] row;
+			return false;
+		}
+	}
+
+	// check containing grid
+	int* grid = getContainingGrid(x, y);
+	for(int x = 0; x < 3; x++){
+		for(int y = 0; y < 3; y++){
+			if(grid[x*3 + y] == value){
+				delete[] col;
+				delete[] row;
+				delete[] grid;
+				return false;
+			}
+		}
+	}
+
+	delete[] col;
+	delete[] row;
+	delete[] grid;
+
+	return true;
+}
 
 // private
 void Sudoku::printIntArray(int* arr, int length){

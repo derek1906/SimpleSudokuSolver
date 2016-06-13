@@ -21,12 +21,30 @@ public:
 	Sudoku();
 	Sudoku(std::ifstream& file);
 
+	~Sudoku(){
+		//printf("Destructing.\n");
+	}
+
+	Sudoku& operator=(const Sudoku& other){
+		for(int x = 0; x < DIMENSION; x++){
+			for(int y = 0; y < DIMENSION; y++){
+				board[x][y] = other.board[x][y];
+			}
+		}
+
+		return *this;
+	}
+
 	void printBoard();
 
 	int* getColumn(int x);
 	int* getRow(int y);
+	int* getContainingGrid(int x, int y);
 
+	int getCell(int x, int y);
 	void setCell(int x, int y, int value);
+
+	bool isValueValid(int x, int y, int value);
 
 private:
 	void printIntArray(int* arr, int length);
