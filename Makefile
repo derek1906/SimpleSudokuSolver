@@ -1,16 +1,16 @@
 CC=clang++
 CFLAGS=-c -Wall -g -O3
-EXECUTABLE=test
+EXECUTABLE=sudoku_solver
 
 all: main $(SOURCES) 
 
 # Link them all together
-main: test.o Sudoku.o SudokuSolver.o
-	$(CC) test.o Sudoku.o SudokuSolver.o -o $(EXECUTABLE)
+main: solver.o Sudoku.o SudokuSolver.o
+	$(CC) solver.o Sudoku.o SudokuSolver.o -o $(EXECUTABLE)
 
 # Compile each source file
-test.o: test.cpp 
-	$(CC) $(CFLAGS) test.cpp
+solver.o: solver.cpp 
+	$(CC) $(CFLAGS) solver.cpp
 
 Sudoku.o: Sudoku.cpp
 	$(CC) $(CFLAGS) Sudoku.cpp
