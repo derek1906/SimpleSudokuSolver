@@ -4,7 +4,7 @@ A simple and fast Sudoku solver written in C++. The program takes a `.sudoku` fi
 ## The `.sudoku` format
 A `.sudoku` file consists of UTF-8 characters, with "sudoku" in the first 8 bytes:
 
-    sudoku
+	sudoku
 	000580026
 	026000090
 	000000005
@@ -23,6 +23,9 @@ Run the following in the directory:
     make
 
 ## Running the binary
-The program has only one argument for the file name to be read as input:
+The program has the following arguments:
 
-    ./sudoku_solver file_name
+    ./sudoku_solver [-b] -s source_file_path
+
+ - `-b` Brute force mode (slow)
+ - `-s` Specify path to source file
