@@ -22,6 +22,8 @@ Run the following in the directory:
 
     make
 
+By default it uses clang++ for compiling.
+
 ## Running the binary
 The program has the following arguments:
 
