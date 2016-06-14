@@ -10,6 +10,12 @@
 #define FILE_HEADER_POS 0
 #define BOARD_POS 7
 
+/**
+ * Sudoku class
+ *
+ * The Sudoku class holds information of a Sudoku puzzle. This class does not have
+ * any solving mechanism.
+ */
 class Sudoku{
 public:
 	static const int DIMENSION = 9;

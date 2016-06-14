@@ -4,6 +4,13 @@
 #include <list>
 #include "Sudoku.h"
 
+/**
+ * SudokuSolver class
+ * @class
+ *
+ * This class performs a series of actions in attempt to solve a Sudoku instance.
+ * All modifications are in place - supplied Sudoku instance will be changed.
+ */
 class SudokuSolver{
 private:
 	int cellsRemaining;
@@ -19,7 +26,7 @@ private:
 public:
 	SudokuSolver(Sudoku* sudoku);
 
-	bool solve();
+	bool solve(bool bruteForce);
 };
 
 
